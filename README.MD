@@ -1,13 +1,13 @@
 # Simple OS
-This project is intended build a bare-metal application while im learning Rust.
+This project is intended to build a bare-metal application while I'm learning Rust.
 
 You can have a reference for this project here: https://os.phil-opp.com/
 
 ## Considerations
 
-- This project uses nightly Rust compiler, so it mighty break sometimes
-- The project target CPU architecture is x86-64
-- The project builds the Rust core lib for our custom target (you can check the configs at `.cargo/config.toml`)
+- Uses the Rust nightly compiler, which means it might occasionally break due to nightly changes.
+- Targets the x86-64 CPU architecture.
+- Builds the Rust core library for a custom target (see configuration in `.cargo/config.toml`).
 
 ## How to run it
 
