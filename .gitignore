@@ -1,0 +1,66 @@
+# === Rust standard ===
+# Build output
+/target/
+
+# Lock file (optional — keep it if this is an application)
+# /Cargo.lock
+
+# === Rust tools ===
+# Backup and temporary Rust files
+**/*.rs.bk
+*.rlib
+*.rmeta
+
+# === RustRover / JetBrains IDE ===
+.idea/
+*.iml
+.idea_modules/
+.idea_workspace/
+.idea/**/shelf/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/libraries
+.idea/**/caches
+.idea/**/modules.xml
+.idea/**/assetWizardSettings.xml
+.idea/**/gradle.xml
+.idea/**/misc.xml
+
+# === Operating Systems ===
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# === Editor-specific ===
+# VS Code
+.vscode/
+
+# === Logs and temp files ===
+*.log
+*.tmp
+*.swp
+*.swo
+
+# === Alternative build tools ===
+# (for cross-compilation or external build scripts)
+build/
+out/
+dist/
+
+# === Personal/local files ===
+.env
+.env.local
+*.bak
+*.old
+*.backup
