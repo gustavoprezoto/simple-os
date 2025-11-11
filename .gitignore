@@ -2,9 +2,6 @@
 # Build output
 /target/
 
-# Lock file (optional — keep it if this is an application)
-# /Cargo.lock
-
 # === Rust tools ===
 # Backup and temporary Rust files
 **/*.rs.bk
