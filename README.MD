@@ -11,6 +11,7 @@ You can have a reference for this project here: https://os.phil-opp.com/
 
 ## How to run it
 
-1. [Install nightly Rust compiler](https://os.phil-opp.com/minimal-rust-kernel/#installing-rust-nightly)
-2. Build the project for the custom target/architecture with `cargo build --target x86_64-simple-os.json`
-3. TBD...
+1. [Install nightly Rust compiler](https://os.phil-opp.com/minimal-rust-kernel/#installing-rust-nightly) and make it default
+2. [Install QEMU](https://www.qemu.org/) (make sure that the path is correct in your environment)
+3. Install bootimage tool with cargo using `cargo install bootimage`
+4. Run with `cargo run --target x86_64-simple-os.json`
