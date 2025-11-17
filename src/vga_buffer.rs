@@ -1,3 +1,6 @@
+use core::fmt;
+use lazy_static::lazy_static;
+use spin::Mutex;
 use volatile::Volatile;
 
 #[allow(dead_code)] // Tells the compiler to ignore not used coded warnings
@@ -43,6 +46,16 @@ struct ScreenChar {
 const BUFFER_HEIGHT: usize = 25;
 const BUFFER_WIDTH: usize = 80;
 
+lazy_static! {
+
+    pub static ref WRITER: Mutex<Writer> = Mutex::new(Writer {
+        column_position: 0,
+        color_code: ColorCode::new(Color::Yellow, Color::Black),
+        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) }, // We can create a raw pointer to 0xb8000
+        // casting the address to Buffer because Buffer has 4000 sequential bytes (80x25x2), matching with VGA Buffer.
+    });
+}
+
 #[repr(transparent)]
 struct Buffer {
     // Matrix with 80 ScreenChar's and 25 lines for it.
@@ -55,6 +68,13 @@ pub struct Writer {
     buffer: &'static mut Buffer,
 }
 
+impl fmt::Write for Writer {
+    // This method is used in the write!() macro
+    fn write_str(&mut self, s: &str) -> fmt::Result {
+        self.write_string(s);
+        Ok(())
+    }
+}
 
 impl Writer {
     pub fn write_string(&mut self, s: &str) {
@@ -91,18 +111,4 @@ impl Writer {
     }
 
     fn new_line(&mut self) {}
-}
-
-pub fn test() {
-    static HELLO: &[u8] = b"Hello World!";
-    let mut writer = Writer {
-        column_position: 0,
-        color_code: ColorCode::new(Color::Yellow, Color::Black),
-        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) }, // We can create a raw pointer to 0xb8000
-        // casting the address to Buffer because Buffer has 4000 sequential bytes (80x25x2), matching with VGA Buffer.
-    };
-
-    writer.write_string("teste");
-    writer.write_string("T e s t e");
-    writer.write_string("öö");
 }
