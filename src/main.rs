@@ -5,14 +5,14 @@
 use core::panic::PanicInfo;
 
 mod vga_buffer;
-
-static HELLO: &[u8] = b"Hello World!";
-
 #[unsafe(no_mangle)]
 pub extern "C" fn _start() -> ! {
     use core::fmt::Write;
 
-    vga_buffer::WRITER.lock().write_str("Hello World!").unwrap();
+    vga_buffer::WRITER.lock().write_str("Test\n").unwrap();
+    vga_buffer::WRITER.lock().write_str("Test\n").unwrap();
+    vga_buffer::WRITER.lock().write_str("Test\n").unwrap();
+    vga_buffer::WRITER.lock().write_str("Test\n").unwrap();
 
     loop {}
 }
